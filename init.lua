@@ -42,9 +42,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 vim.opt.rtp:prepend(lazypath)
 
-local lazy = require 'lazy'
-lazy.setup({
-  'tpope/vim-sleuth',
+require('lazy').setup({
+  { 'tpope/vim-sleuth' },
   { 'numToStr/Comment.nvim', opts = {} },
   {
     'lewis6991/gitsigns.nvim',
@@ -131,7 +130,6 @@ lazy.setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -192,6 +190,7 @@ lazy.setup({
         },
       }
 
+      require('lspconfig').dartls.setup {}
       require('mason').setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})

@@ -38,6 +38,7 @@ local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
+  change_detection = { notify = false },
   ui = {
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',

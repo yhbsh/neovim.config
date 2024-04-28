@@ -46,27 +46,16 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
+      rust_analyzer = {},
+      dartls = {},
+      zls = {},
       clangd = {},
+      stylua = {},
+      lua_ls = {},
       gopls = {},
-      sourcekit = {},
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-          },
-        },
-      },
     }
 
-    require('lspconfig').dartls.setup {}
-    require('lspconfig').zls.setup {}
     require('mason').setup()
-
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, { 'stylua' })
-
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
@@ -77,7 +66,5 @@ return {
         end,
       },
     }
-
-    require('lspconfig').sourcekit.setup {}
   end,
 }

@@ -48,7 +48,6 @@ return {
     local servers = {
       clangd = {},
       gopls = {},
-      jdtls = {},
       sourcekit = {},
       lua_ls = {
         settings = {
@@ -62,6 +61,7 @@ return {
     }
 
     require('lspconfig').dartls.setup {}
+    require('lspconfig').zls.setup {}
     require('mason').setup()
 
     local ensure_installed = vim.tbl_keys(servers or {})

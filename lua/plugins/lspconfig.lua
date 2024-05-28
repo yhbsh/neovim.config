@@ -1,11 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'j-hui/fidget.nvim', opts = {} },
-    { 'folke/neodev.nvim', opts = {} },
+    { 'j-hui/fidget.nvim' },
+    { 'folke/neodev.nvim' },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -45,26 +42,12 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    local servers = {
-      rust_analyzer = {},
-      dartls = {},
-      zls = {},
-      clangd = {},
-      stylua = {},
-      lua_ls = {},
-      gopls = {},
-    }
-
-    require('mason').setup()
-    require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local config = require 'lspconfig'
-          local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          config[server_name].setup(server)
-        end,
-      },
-    }
+    local config = require 'lspconfig'
+    config.dartls.setup { capabilities = capabilities }
+    config.clangd.setup { capabilities = capabilities }
+    config.gopls.setup { capabilities = capabilities }
+    config.rust_analyzer.setup { capabilities = capabilities }
+    config.lua_ls.setup { capabilities = capabilities }
+    config.stylua.setup { capabilities = capabilities }
   end,
 }

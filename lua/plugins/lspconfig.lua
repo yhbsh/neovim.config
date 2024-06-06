@@ -43,11 +43,11 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local config = require 'lspconfig'
-    config.dartls.setup { 
-      capabilities = capabilities, 
+    config.dartls.setup {
+      capabilities = capabilities,
       settings = {
         lineLength = 300,
-      }, 
+      },
     }
     config.clangd.setup { capabilities = capabilities }
     config.gopls.setup { capabilities = capabilities }

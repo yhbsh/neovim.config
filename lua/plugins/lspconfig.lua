@@ -53,6 +53,6 @@ return {
     config.gopls.setup { capabilities = capabilities }
     config.rust_analyzer.setup { capabilities = capabilities }
     config.lua_ls.setup { capabilities = capabilities }
-    config.stylua.setup { capabilities = capabilities }
+    config.zls.setup { capabilities = capabilities }
   end,
 }

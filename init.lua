@@ -2,6 +2,9 @@
 vim.g.mapleader        = ' '
 vim.g.maplocalleader   = ' '
 
+-- Zig Fmt
+vim.g.zig_fmt_autosave = 0
+
 -- Providers
 vim.g.have_nerd_font   = true
 vim.g.loaded_ruby_provider = 0

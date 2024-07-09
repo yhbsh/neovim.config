@@ -23,11 +23,17 @@ return {
     })
 
     local config = require('lspconfig')
-    config.dartls.setup { settings = { lineLength = 300 } }
+    config.dartls.setup {
+        settings = {
+            lineLength = 300,
+            enableSdkFormatter = true,
+        },
+    }
     config.clangd.setup {}
     config.gopls.setup {}
     config.rust_analyzer.setup {}
     config.lua_ls.setup {}
     config.zls.setup {}
+    config.tsserver.setup {}
   end,
 }

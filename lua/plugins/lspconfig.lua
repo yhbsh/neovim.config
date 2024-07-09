@@ -1,8 +1,7 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-        { 'williamboman/mason.nvim', config = true},
-        'williamboman/mason-lspconfig.nvim',
+        { 'williamboman/mason.nvim', config = true },
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -39,6 +38,5 @@ return {
         config.lua_ls.setup {}
         config.zls.setup {}
         config.tsserver.setup {}
-        config.jdtls.setup {}
     end,
 }

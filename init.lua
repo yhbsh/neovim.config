@@ -19,8 +19,6 @@ vim.opt.showmode       = false
 vim.opt.clipboard      = 'unnamedplus'
 vim.opt.breakindent    = true
 vim.opt.signcolumn     = 'yes'
-vim.opt.list           = true
-vim.opt.listchars      = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand     = 'split'
 vim.opt.cursorline     = true
 vim.opt.guicursor      = 'n-v-c-sm-r-cr-o-i-ci-ve:hor25'

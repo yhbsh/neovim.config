@@ -38,5 +38,6 @@ return {
         config.lua_ls.setup {}
         config.zls.setup {}
         config.tsserver.setup {}
+        config.bashls.setup {}
     end,
 }

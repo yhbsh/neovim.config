@@ -28,8 +28,7 @@ return {
         local config = require('lspconfig')
         config.dartls.setup {
             settings = {
-                lineLength = 300,
-                enableSdkFormatter = true,
+                lineLength = 400,
             },
         }
         config.clangd.setup {}

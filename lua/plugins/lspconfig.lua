@@ -25,19 +25,17 @@ return {
           end,
         })
 
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local config = require('lspconfig')
-        config.dartls.setup {
-            settings = {
-                lineLength = 400,
-            },
-        }
-        config.clangd.setup {}
-        config.gopls.setup {}
-        config.rust_analyzer.setup {}
-        config.lua_ls.setup {}
-        config.zls.setup {}
-        config.tsserver.setup {}
-        config.bashls.setup {}
-        config.cmake.setup {}
+
+        config.dartls.setup { capabilities = capabilities, settings = { lineLength = 400 } }
+        config.clangd.setup { capabilities = capabilities }
+        config.gopls.setup { capabilities = capabilities }
+        config.rust_analyzer.setup { capabilities = capabilities }
+        config.lua_ls.setup { capabilities = capabilities }
+        config.zls.setup { capabilities = capabilities }
+        config.tsserver.setup { capabilities = capabilities }
+        config.bashls.setup { capabilities = capabilities }
+        config.cmake.setup { capabilities = capabilities }
     end,
 }

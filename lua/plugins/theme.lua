@@ -1,7 +1,7 @@
 return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  config = function()
-    vim.cmd.colorscheme 'rose-pine'
-  end,
+    'tiagovla/tokyodark.nvim',
+    name = 'tokyodark',
+    config = function ()
+        vim.cmd.colorscheme 'tokyodark'
+    end
 }

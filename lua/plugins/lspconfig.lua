@@ -39,5 +39,6 @@ return {
         config.zls.setup {}
         config.tsserver.setup {}
         config.bashls.setup {}
+        config.cmake.setup {}
     end,
 }

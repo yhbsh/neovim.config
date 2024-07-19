@@ -1,15 +1,16 @@
 return {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = {'InsertEnter', 'CmdlineEnter'},
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
     },
     config = function()
         local cmp = require('cmp')
 
-        cmp.setup {
+        cmp.setup({
             mapping = cmp.mapping.preset.insert({
                 ['<C-n>'] = cmp.mapping.select_next_item(),
                 ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -29,10 +30,26 @@ return {
                         nvim_lsp = "[LSP]",
                         buffer = "[Buffer]",
                         path = "[Path]",
+                        cmdline = "[Cmd]",
                     })[entry.source.name]
                     return vim_item
                 end
             },
-        }
+        })
+
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' },
+                { name = 'cmdline' }
+            })
+        })
+
+        cmp.setup.cmdline('/', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' }
+            }
+        })
     end,
 }

@@ -1,48 +1,48 @@
 -- Leader keys
-vim.g.mapleader        = ' '
-vim.g.maplocalleader   = ' '
+vim.g.mapleader            = ' '
+vim.g.maplocalleader       = ' '
 
 -- Zig Fmt
-vim.g.zig_fmt_autosave = 0
+vim.g.zig_fmt_autosave     = 0
 
 -- Providers
-vim.g.have_nerd_font   = true
+vim.g.have_nerd_font       = true
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider  = 0
+vim.g.loaded_perl_provider = 0
 
 -- Appearance settings
-vim.opt.number         = true
-vim.opt.relativenumber = true
-vim.opt.mouse          = 'a'
-vim.opt.showmode       = false
-vim.opt.clipboard      = 'unnamedplus'
-vim.opt.breakindent    = true
-vim.opt.signcolumn     = 'yes'
-vim.opt.inccommand     = 'split'
-vim.opt.cursorline     = true
-vim.opt.guicursor      = 'n-v-c-sm-r-cr-o-i-ci-ve:hor25'
+vim.opt.number             = true
+vim.opt.relativenumber     = true
+vim.opt.mouse              = 'a'
+vim.opt.showmode           = false
+vim.opt.clipboard          = 'unnamedplus'
+vim.opt.breakindent        = true
+vim.opt.signcolumn         = 'yes'
+vim.opt.inccommand         = 'split'
+vim.opt.cursorline         = true
+vim.opt.guicursor          = 'n-v-c-sm-r-cr-o-i-ci-ve:hor25'
 
 -- File handling
-vim.opt.undofile       = true
+vim.opt.undofile           = true
 
 -- Search settings
-vim.opt.ignorecase     = true
-vim.opt.smartcase      = true
-vim.opt.hlsearch       = true
+vim.opt.ignorecase         = true
+vim.opt.smartcase          = true
+vim.opt.hlsearch           = true
 
 -- UI behavior
-vim.opt.updatetime     = 250
-vim.opt.timeoutlen     = 300
-vim.opt.splitright     = true
-vim.opt.splitbelow     = true
-vim.opt.scrolloff      = 20
+vim.opt.updatetime         = 250
+vim.opt.timeoutlen         = 300
+vim.opt.splitright         = true
+vim.opt.splitbelow         = true
+vim.opt.scrolloff          = 20
 
 -- Indentation settings
-vim.opt.tabstop        = 4
-vim.opt.shiftwidth     = 4
-vim.opt.softtabstop    = 4
-vim.opt.expandtab      = true
+vim.opt.tabstop            = 4
+vim.opt.shiftwidth         = 4
+vim.opt.softtabstop        = 4
+vim.opt.expandtab          = true
 
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -60,22 +60,22 @@ local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
-  change_detection = { notify = false },
-  ui = {
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
+    change_detection = { notify = false },
+    ui = {
+        icons = vim.g.have_nerd_font and {} or {
+            cmd = '⌘',
+            config = '🛠',
+            event = '📅',
+            ft = '📂',
+            init = '⚙',
+            keys = '🗝',
+            plugin = '🔌',
+            runtime = '💻',
+            require = '🌙',
+            source = '📄',
+            start = '🚀',
+            task = '📌',
+            lazy = '💤 ',
+        },
     },
-  },
 })

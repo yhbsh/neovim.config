@@ -78,4 +78,8 @@ require('lazy').setup('plugins', {
             lazy = '💤 ',
         },
     },
+    rocks = {
+        enabled = false,
+        hererocks = false
+    },
 })

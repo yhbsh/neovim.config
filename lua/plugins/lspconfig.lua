@@ -25,22 +25,50 @@ return {
             end,
         })
 
-        vim.api.nvim_create_autocmd('BufWritePre', {
-            group = vim.api.nvim_create_augroup('lsp_format_on_save', { clear = true }),
-            callback = function(event)
-                if event.match:match("^%w+://") then
-                    return
-                end
-                vim.lsp.buf.format({ bufnr = event.buf, async = true })
-            end,
-        })
-
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local config = require('lspconfig')
 
-        config.dartls.setup { capabilities = capabilities, settings = { lineLength = 400 } }
+        config.dartls.setup {
+            capabilities = capabilities,
+            settings = {
+                lineLength = 400,
+                enableSdkFormatter = true,
+            }
+        }
         config.clangd.setup { capabilities = capabilities }
-        config.gopls.setup { capabilities = capabilities }
+        config.gopls.setup {
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                        nilness = true,
+                        shadow = true,
+                        unusedwrite = true,
+                        useany = true,
+                    },
+                    staticcheck = true,
+                    gofumpt = true,
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                    codelenses = {
+                        generate = true,
+                        gc_details = true,
+                        test = true,
+                        tidy = true,
+                    },
+                },
+            },
+            on_attach = function(_, bufnr)
+                vim.api.nvim_create_autocmd("BufWritePre", {
+                    group = vim.api.nvim_create_augroup("GoFormat", {}),
+                    buffer = bufnr,
+                    callback = function()
+                        vim.lsp.buf.format({ bufnr = bufnr })
+                    end,
+                })
+            end,
+        }
         config.rust_analyzer.setup { capabilities = capabilities }
         config.lua_ls.setup { capabilities = capabilities }
         config.zls.setup { capabilities = capabilities }
